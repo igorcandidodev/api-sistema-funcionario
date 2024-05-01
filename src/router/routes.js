@@ -1,5 +1,7 @@
-import employeeRouter from './employeeRouter'
+import employeeRouter from "./employeeRouter";
+import departmentRouter from "./departmentRouter";
 
 export const routes = {
-    employee: employeeRouter,
-}
+  employee: employeeRouter,
+  department: departmentRouter,
+};
