@@ -22,6 +22,7 @@ app.use(async (req, res, next) => {
 
 app.use("/employee", routes.employee);
 app.use("/department", routes.department);
+app.use("/task", routes.task);
 // app.use('/path, routes.rotaQueVocêCriou);
 
 sequelize.sync({ force: eraseDatabaseOnSync });
