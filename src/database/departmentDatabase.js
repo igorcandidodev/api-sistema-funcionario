@@ -18,14 +18,14 @@ const getDepartment = (sequelize, { DataTypes }) => {
       type: DataTypes.STRING,
       unique: true,
     },
-    managerId: {
+    supervisorId: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
   });
 
   department.associate = (models) => {
-    department.belongsTo(models.Employee, { foreignKey: "managerId" });
+    department.belongsTo(models.Employee, { foreignKey: "supervisorId" });
   };
 
   return department;
