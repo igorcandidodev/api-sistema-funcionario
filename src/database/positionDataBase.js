@@ -20,6 +20,12 @@ const getPosition = (sequelize, {DataTypes}) => {
             allowNull: false
         }
     });
+    
+    position.associate=(models) => {
+        position.hasMany(models.Employee)
+    }
 
     return position;
 };
+
+export default getPosition;

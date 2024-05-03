@@ -29,6 +29,10 @@ const getEmployee = (sequelize, {DataTypes}) => {
         }
     });
 
+    employee.associate=(models) => {
+        models.belongsTo(models.Position)
+    }
+    
     return employee;
 }
 
