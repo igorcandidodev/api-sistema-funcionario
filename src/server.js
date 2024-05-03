@@ -24,6 +24,7 @@ app.use("/employee", routes.employee);
 app.use("/department", routes.department);
 app.use("/task", routes.task);
 app.use("/supervisor", routes.supervisor);
+app.use("/project", routes.project);
 // app.use('/path, routes.rotaQueVocêCriou);
 
 sequelize.sync({ force: eraseDatabaseOnSync });
