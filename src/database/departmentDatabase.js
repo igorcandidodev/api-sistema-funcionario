@@ -18,14 +18,11 @@ const getDepartment = (sequelize, { DataTypes }) => {
       type: DataTypes.STRING,
       unique: true,
     },
-    supervisorId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-  });
+  }, { timestamps: false });
 
-  department.associate = (models) => {
-    department.belongsTo(models.Employee, { foreignKey: "supervisorId" });
+  department.associate = (databases) => {
+    department.hasMany(databases.Employee);
+    department.hasMany(databases.Project, { onDelete: 'CASCADE'});
   };
 
   return department;

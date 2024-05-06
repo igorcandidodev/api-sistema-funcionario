@@ -19,10 +19,10 @@ const getPosition = (sequelize, {DataTypes}) => {
             type: DataTypes.FLOAT,
             allowNull: false
         }
-    });
+    }, { timestamps: false });
     
-    position.associate=(models) => {
-        position.hasMany(models.Employee)
+    position.associate=(databases) => {
+        position.hasMany(databases.Employee)
     }
 
     return position;

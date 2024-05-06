@@ -12,15 +12,11 @@ const getTask = (sequelize, { DataTypes }) => {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        employeeId: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-    });
+        }
+    }, { timestamps: false });
 
-    task.associate = (models) => {
-        task.belongsTo(models.Employee, { foreignKey: "employeeId" });
+    task.associate = (databases) => {
+        task.hasOne(databases.Employee, { onDelete: 'CASCADE'});
     };
 
     return task;

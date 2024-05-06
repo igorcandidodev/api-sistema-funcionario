@@ -27,10 +27,14 @@ const getEmployee = (sequelize, {DataTypes}) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-    });
+    }, { timestamps: false });
 
-    employee.associate=(models) => {
-        models.belongsTo(models.Position)
+    employee.associate=(databases) => {
+        employee.belongsTo(databases.Position),
+        employee.belongsTo(databases.Department),
+        employee.belongsTo(databases.Project),
+        employee.belongsTo(databases.Supervisor),
+        employee.belongsTo(databases.Task)
     }
     
     return employee;
