@@ -27,10 +27,10 @@ const getSupervisor = (sequelize, { DataTypes }) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+  }, { timestamps: false });
 
-  supervisor.associate = (models) => {
-    supervisor.hasOne(models.Department, { foreignKey: "supervisorId" });
+  supervisor.associate = (databases) => {
+    supervisor.hasMany(databases.Employee);
   };
 
   return supervisor;

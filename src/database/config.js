@@ -5,7 +5,7 @@ import getDepartment from "./departmentDatabase";
 import getTask from "./taskDatabase";
 import getSupervisor from "./supervisorDataBase";
 import getProject from "./projectDataBase";
-import getPosition from './positionDatabaseDatabase';
+import getPosition from './positionDataBase';
 
 const url = process.env.DATABASE_URL;
 
@@ -20,8 +20,11 @@ const databases = {
   Supervisor: getSupervisor(sequelize, Sequelize),
   Project: getProject(sequelize, Sequelize),
   Position: getPosition(sequelize, Sequelize),
-  // Adiciona aqui as próximas tabelas
 };
+
+Object.values(databases)
+  .filter(model => typeof model.associate === "function")
+  .forEach(model => model.associate(databases));
 
 export { sequelize };
 

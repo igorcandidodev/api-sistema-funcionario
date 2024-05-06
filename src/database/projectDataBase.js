@@ -16,15 +16,12 @@ const getProject = (sequelize, { DataTypes }) => {
         status: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        departmentId: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-    });
+        }
+    }, { timestamps: false });
 
-    project.associate = (models) => {
-        project.belongsTo(models.Employee, { foreignKey: "departmentId" });
+    project.associate = (databases) => {
+        project.hasMany(databases.Employee),
+        project.belongsTo(databases.Department)
     };
 
     return project;
