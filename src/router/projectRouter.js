@@ -46,9 +46,14 @@ router.get("/", async (req, res) => {
     }
   });
   
-  router.post("/", async (req, res) => {
+  router.post("/:departmentId", async (req, res) => {
     try {
-      const project = await req.context.databases.Project.create(req.body);
+      const project = await req.context.databases.Project.create({
+        name: req.body.name,
+        description: req.body.description,
+        status: req.body.status,
+        departmentId: req.params.departmentId,
+      });
   
       return res.send(project);
     } catch (err) {
